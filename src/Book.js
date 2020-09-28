@@ -7,18 +7,17 @@ class Book extends Component {
         const { book, onMoveBookShelf } = this.props;
         const {
             title,
-            authors,
-            imageLinks: {
-                thumbnail
-            }
+            authors
         } = book;
+        let thumbnail = '';
+        thumbnail = book.imageLinks ? book.imageLinks.thumbnail : '';
         return (
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
                     <div className="book-shelf-changer">
                         <select
-                            value={book.shelf}
+                            value={book.shelf ? book.shelf : 'none'}
                             onChange={(e) => onMoveBookShelf(book, e.target.value)}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -29,7 +28,7 @@ class Book extends Component {
                     </div>
                 </div>
                 <div className="book-title">{ title }</div>
-                <div className="book-authors">{ authors[0] }</div>
+                <div className="book-authors">{ authors ? authors[0] : '' }</div>
             </div>
         );
     }

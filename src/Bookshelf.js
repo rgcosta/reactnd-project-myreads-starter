@@ -8,7 +8,7 @@ class Bookshelf extends Component {
         const { name, books, onMoveBookShelf } = this.props;
         return (
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{ name }</h2>
+                <h2 className="bookshelf-title">{ name } ({books.length})</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         { books.map((book) => (
